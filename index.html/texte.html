@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page de souvenirs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/lined-paper.png');
+      background-color: #f7fbff;
+      min-height: 100vh;
+      color: #2d4c68;
+      padding: 2em 1em;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Plantes décoratives */
+    .plant {
+      position: fixed;
+      width: 150px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+     .home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #a2c2e0;
+      color:white;
+      padding: 0.6em 1.2em;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+    }
+
+    .home-button:hover {
+      background-color: #7fa9ce;
+      transform: scale(1.05);
+    }
+
+    .plant.left {
+      bottom: 0;
+      left: 0;
+    }
+
+    .plant.right {
+      bottom: 0;
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2em;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #3b5e7e;
+      text-shadow: 1px 1px 2px #dceeff;
+    }
+
+    /* Bloc de contenu type cahier */
+    .notebook {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 2px solid #d0e2f3;
+      border-left: 15px solid #a2c2e0;
+      border-radius: 8px;
+      padding: 2em;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .notebook p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5em;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3em;
+      padding: 1em;
+      color: #4a6a8e;
+      font-size: 0.9em;
+      z-index: 1;
+      position: relative;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-image: url('file:///C:/Users/Rayxers/Downloads/istockphoto-1366975263-612x612-fotor-bg-remover-2025072922234.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+      opacity: 0.10;
+      filter: drop-shadow(1px 1px 1px #7a9ebc);
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+
+     
+
+    @media (max-width: 600px) {
+      .plant {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    const leafCount = 15;
+    for (let i = 0; i < leafCount; i++) {
+      const leaf = document.createElement('div');
+      leaf.classList.add('leaf');
+      leaf.style.left = Math.random() * 100 + 'vw';
+      leaf.style.animationDuration = 7 + Math.random() * 6 + 's';
+      leaf.style.animationDelay = Math.random() * 7 + 's';
+      document.body.appendChild(leaf);
+    }
+  </script>
+
+  <!-- Bouton Accueil -->
+  <a href="acc.html" class="home-button">🏠 Accueil</a>
+
+  <!-- Plantes décoratives -->
+  <img src="https://img.freepik.com/vecteurs-premium/illustration-vectorielle-dessin-anime-mignon-chien-teckel-couleur-rouge_42750-1101.jpg" class="plant left" />
+  <img src="https://img.freepik.com/vecteurs-premium/illustration-vectorielle-dessin-anime-mignon-chien-teckel-couleur-rouge_42750-1101.jpg" class="plant right" />
+
+  <header>
+    <h1>mes pensées !</h1>
+  </header>
+
+  <div class="notebook">
+    <p>
+     
+Coucou sasha ! j'espère que tu vas bien a l’heure ou tu lis ce message.
+A défaut de te faire un un roman sur notre vie depuis 1an maintenant ( je sais pas si ça sera ça mais en tout cas c’est mon pronostique sur le cadeau que tu me feras) je t'écris un petit message afin de te remercier d’être à mes côtés..</p>
+
+
+<p>
+Coucou Madame je suis en pleine révision du bac de français mais je profite d’une petite pause afin de t’écrire mes pensées d’il y a un instant. Tu te rappelles de la première fois ou on a fait notre premier sandwich ensemble ? bah là j'en ai fais un ce matin avant d’aller courir et c’était toujours pas fameux.. mais mine de rien en concoctant ce mets de fortune j’ai eu le temps d'esquisser un sourire en me remémorant notre premier date tout aussi douteux que iconique quand j’y repense ! je retourne travailler des bisous Sasha <3</p>
+
+<p>
+REbonjour madame, tout d’abord j'espère que tu as kiffé mon petit pain au chocolat de ce matin, en tout cas moi j'ai bien kiffé le doudou singe chaussette digne d’une paralysie du sommeille mais bon.. c’est pas grave il est tout mignon mais bon je te préfère toi et ta jolie tête</p>
+
+<p>
+Comment tu vas sasha ? Perso j'ai le morale dans les chaussettes ( je suis cooked pour le bac) aujourd'hui je commence à m'attaquer à manon lescaut cette salope.. Bref la n’est pas le sujet, tout à l'heure je suis allé en voiture faire deux trois courses avec ma mère et dans le plus grand des hasard je me suis vu écouter du tvgirl sur SkyRock ?? étrange mais bien sûr qui dit Tv girls dit Sasha donc voilà, voici une petite pensée comment plein d'autres au cours de ma journée ! mais avant de te quitter pour ce jour je voulais te remercier pour cette petite journée et d’avoir été à mes côtés pour la fête de la musique (j'espère que tu as kiffé mon bouquet d'ailleurs). tu étais rayonnante encore une fois..</p>
+
+
+<p>
+Salut ! ce matin je révise la grammaire, je me suis levé du mauvais pied fin’ au sens littéral car je me suis fais un sacré bleu en glissant en me levant… mais bon c’est pas grave ce matin je mange un petit déj à base de… Galette de riz avec de la confiture… comme quoi même dans les instants les plus simples de la vie rien ne m'empêche de penser à toi et aux moments qu’on passe ensemble. Tu trouveras peut être ce passage assez anecdotique mais bon hein oh tu vas rien faire juste être à côté de toi ça me manque un peu ( je suis content que ton oral ce soit bien passé) </p>
+
+
+<p>
+voilà jai sorti quelques anecdotes qui m'ont fait penser à toi hehe j'espère que tu auras kiffé cette immersion dans mon quotidien de neuille ! 
+
+    </p>
+  </div>
+
+  <footer>
+    &copy; 1an et ce n'est que le début🌿
+  </footer>
+</body>
+</html>

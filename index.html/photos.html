@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pellicule Kodak Nature</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a0bfa3, #dbe9d5);
+      background-image: url('https://images.unsplash.com/photo-1712145176570-6cb1d98a126a?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2hpdGUlMjBwYXBlciUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+      background-blend-mode: overlay;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+.home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #2E6321;
+      color: white;
+      padding: 0.6em 1.2em;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+    }
+
+    .home-button:hover {
+      background-color: #2E6321;
+      transform: scale(1.05);
+    }
+    .home-icon,
+    .user-icon {
+      position: absolute;
+      top: 20px;
+      z-index: 10;
+    }
+
+    .home-icon {
+      left: 20px;
+    }
+
+    .user-icon {
+      right: 20px;
+    }
+
+    .home-icon a,
+    .user-icon a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      background: #2E6321;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+
+    .home-icon a:hover,
+    .user-icon a:hover {
+      background: #6c8f65;
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 2em;
+      color: #2f4f2f;
+    }
+
+    p.description {
+      color: #4d6b50;
+      margin-bottom: 30px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .film-strip {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 40px;
+      padding: 60px 30px;
+      background: #444;
+      border: 20px solid #333;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .film-strip::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    .film-strip::-webkit-scrollbar-thumb {
+      background: #88a97f;
+      border-radius: 10px;
+    }
+
+    .frame {
+      flex: none;
+      width: 400px;
+      height: 300px;
+      background: #000;
+      border: 6px solid #111;
+      border-radius: 6px;
+      position: relative;
+      scroll-snap-align: center;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    /* Kodak perforations */
+    .frame::before,
+    .frame::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 100%;
+      top: 0;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #f9f7d9,
+        #f9f7d9 8px,
+        transparent 8px,
+        transparent 20px
+      );
+      z-index: 2;
+    }
+
+    .frame::before {
+      left: -14px;
+    }
+
+    .frame::after {
+      right: -14px;
+    }
+
+    /* Kodak label */
+    .kodak-label {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #f9f7d9;
+      font-family: monospace;
+      text-shadow: 0 0 2px black;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 480px) {
+      .frame {
+        width: 300px;
+        height: 220px;
+      }
+    }
+
+    .leaf {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-image: url('file:///C:/Users/Rayxers/Downloads/istockphoto-1366975263-612x612-fotor-bg-remover-2025072922234.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+      opacity: 0.35;
+      filter: drop-shadow(1px 1px 1px #7a9ebc);
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Bouton Accueil -->
+  <a href="acc.html" class="home-button">🏠 Accueil</a>
+
+  
+<script>const leafCount = 15;
+    for (let i = 0; i < leafCount; i++) {
+      const leaf = document.createElement('div');
+      leaf.classList.add('leaf');
+      leaf.style.left = Math.random() * 100 + 'vw';
+      leaf.style.animationDuration = 7 + Math.random() * 6 + 's';
+      leaf.style.animationDelay = Math.random() * 7 + 's';
+      document.body.appendChild(leaf);
+    }</script>
+
+  <h1>Nos petites photo !</h1>
+  <p class="description">Fait défiler les photos.</p>
+
+  <div class="film-strip">
+    <div class="frame">
+      <img src="https://cdn.discordapp.com/attachments/849321778198609942/1399546916555194420/image0.jpg?ex=68896523&is=688813a3&hm=079f777a49c54ea24eaa68453771b606886f09d9fb9f2964f94d42714633463b&" alt="Photo 1">
+      <div class="kodak-label">KODAK 400</div>
+    </div>
+    <div class="frame">
+      <img src="https://cdn.discordapp.com/attachments/849321778198609942/1399590158730268775/IMG_0124.jpg?ex=68898d68&is=68883be8&hm=7c63ed9e5daab68eabcc62543ec591436418d84295e3c0464f881cd0ef66a319&" alt="Photo 2">
+      <div class="kodak-label">KODAK 400</div>
+    </div>
+    <div class="frame">
+      <img src="https://cdn.discordapp.com/attachments/849321778198609942/1399590160282423406/IMG_4295.jpg?ex=68898d69&is=68883be9&hm=a4f83ad2eb484d0a30c4538d7cd56575c90b0baadbb06b08bc748af09e69e61c&">
+      <div class="kodak-label">KODAK 400</div>
+    </div>
+    <div class="frame">
+      <img src="https://cdn.discordapp.com/attachments/849321778198609942/1399590159841759352/FF163067-AEE8-49CB-A4BC-79EA7A94BA34.jpg?ex=68898d69&is=68883be9&hm=df67549ff004035a88aa1a261ba71494851f74f80b15a57b23ec84b67accf9c1&">
+      <div class="kodak-label">KODAK 400</div>
+    </div>
+    <div class="frame">
+      <img src="https://cdn.discordapp.com/attachments/849321778198609942/1399590159607009280/74211925-b372-4fb4-b16f-90b6a1d7455d.jpg?ex=68898d69&is=68883be9&hm=d0514c46ead3e199e496bfb6643e90d7c861eac5a7440a3daa7b52e524a3e97b&">
+      <div class="kodak-label">KODAK 400</div>
+    <div>class="frame">
+      <img src="https://source.unsplash.com/random/800x600?couple5" alt="Photo 6">
+      <div class="kodak-label">KODAK 400</div>
+    </div>
+  </div>
+</body>
+</html>
